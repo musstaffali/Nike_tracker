@@ -21,22 +21,20 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/dbExample", { u
 require("./routes/api-routes.js")(app);
 
 
-// POST /api/workouts
-// PUT /api/workouts/:id
-// GET /api/workouts/range (Last 7 days: Think limit(7))
-
-
-// HTML ROUTES
+// HTML ROUTES -> index.html
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "public/index.html"));
 });
+
+// HTML ROUTES --> excercise.html
 app.get("/exercise", (req, res) => {
     res.sendFile(path.join(__dirname, "public/exercise.html"));
 });
+
+// HTML ROUTES --> stats.html
 app.get("/stats", (req, res) => {
     res.sendFile(path.join(__dirname, "public/stats.html"));
 });
-
 app.listen(PORT, () => {
     console.log(`App is running on http://localhost:${PORT}!`);
 });
