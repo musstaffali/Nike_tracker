@@ -2,12 +2,11 @@ const memory = require("../models");
 
 
 module.exports = function (doit) {
-    //get workouts
+
     doit.get("/api/workouts", (req, res) => {
 
         memory.Workout.find({}).then(memoryWorkout => {
-            // console.log("ALL WORKOUTS");
-            // console.log(memoryWorkout);
+
             memoryWorkout.forEach(workout => {
                 var total = 0;
                 workout.exercises.forEach(e => {
@@ -45,8 +44,7 @@ module.exports = function (doit) {
 
     //create workout
     doit.post("/api/workouts", ({ body }, res) => {
-        // console.log("WORKOUT TO BE ADDED");
-        // console.log(body);
+
 
         memory.Workout.create(body).then((memoryWorkout => {
             res.json(memoryWorkout);
@@ -55,7 +53,7 @@ module.exports = function (doit) {
         });
     });
 
-    // get workouts in range
+
     doit.get("/api/workouts/range", (req, res) => {
 
         memory.Workout.find({}).then(memoryWorkout => {
