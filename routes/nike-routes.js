@@ -1,9 +1,9 @@
 const memory = require("../models");
 
 
-module.exports = function (app) {
+module.exports = function (doit) {
     //get workouts
-    app.get("/api/workouts", (req, res) => {
+    doit.get("/api/workouts", (req, res) => {
 
         memory.Workout.find({}).then(memoryWorkout => {
             // console.log("ALL WORKOUTS");
@@ -27,7 +27,7 @@ module.exports = function (app) {
 
 
     // add exercise using id
-    app.put("/api/workouts/:id", (req, res) => {
+    doit.put("/api/workouts/:id", (req, res) => {
 
         memory.Workout.updateOne(
             { _id: req.params.id },
@@ -44,7 +44,7 @@ module.exports = function (app) {
     });
 
     //create workout
-    app.post("/api/workouts", ({ body }, res) => {
+    doit.post("/api/workouts", ({ body }, res) => {
         // console.log("WORKOUT TO BE ADDED");
         // console.log(body);
 
@@ -56,7 +56,7 @@ module.exports = function (app) {
     });
 
     // get workouts in range
-    app.get("/api/workouts/range", (req, res) => {
+    doit.get("/api/workouts/range", (req, res) => {
 
         memory.Workout.find({}).then(memoryWorkout => {
             console.log("ALL WORKOUTS");
