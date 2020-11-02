@@ -18,7 +18,7 @@ app.use(express.static("public"));
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/dbExample", { useNewUrlParser: true });
 
-require("./routes/api-routes.js")(app);
+require("./routes/nike-routes.js")(app);
 
 
 // HTML ROUTES -> index.html
